@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!--href : HyperText REFernece-->
+    <link rel="stylesheet" href="./reset.css" />
+    <style>
+      section {
+        padding: 10px;
+        border: 1px solid rgb(59, 158, 59);
+
+        /* flex container */
+        display: flex;
+      }
+
+      /*
+      flex container 에 포함된 flex item 들은
+      기본 display 속성이 inline-block 이 된다.
+
+      flex item 에 지정하는 대표 속성: 팽창과 수축
+      flex-grow : 팽창
+      flex-shrink : 수축
+      flex-basis : 기준 속성
+      */
+
+      /* flex item */
+      article {
+        border: 1px solid blue;
+      }
+      article:nth-of-type(1) {
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: auto;
+      }
+      article:nth-of-type(2) {
+        flex-grow: 2;
+        /* 
+        flex-shrink 가 0이면 아이템 크기가 flex-basis 보다 작아지지 않는다! 
+        기본값은 1이다
+        */
+        flex-shrink: 0;
+        flex-basis: auto;
+      }
+      article:nth-of-type(3) {
+        flex-grow: 1;
+        flex-shrink: 1;
+        /*
+        grow 나 shrink 가 적용될 때 기준크기
+        basis 는 기본값이 auto 이고,
+        일정한 값으로 지정을 하면
+        */
+        flex-basis: 150px;
+      }
+      article:nth-of-type(4) {
+        flex: 1 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <article><h2>첫번째 아티클</h2></article>
+      <article><h2>두번째 아티클</h2></article>
+      <article><h2>세번째 아티클</h2></article>
+      <article><h2>네번째 아티클</h2></article>
+    </section>
+  </body>
+</html>
