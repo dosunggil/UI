@@ -1,0 +1,152 @@
+<!DOCUTYPE HTML>
+<html language="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>나의 홈페이지</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      .menu-box {
+        position: relative;
+        display: inline-block;
+
+        /*
+            가로방향 drop-menu 여러개 배치될 때
+            drop submenu 가 없는 box 도 항상 상단에 있도록 하는 속성
+        */
+        vertical-align: top;
+      }
+      .top-menu {
+        cursor: pointer;
+        background-color: #260e0b;
+        color: white;
+        padding: 12px 16px;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        margin-left: 20px;
+        text-align: center;
+      }
+      .top-menu:hover {
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6);
+      }
+
+      /*
+
+      display : none ==> tag 자체가 화면에서 아예 사라져 없는 tag가 된다.
+      display : block ==> tag 를 다시 나타나게 한다.
+      display 속성에는 애니메이션 관련 속성이 적용이 잘 안될때가 많다.
+      transition 속성은 아예 작동하지 않는다.
+      
+      visibility : hidden 에서 visible로 변하는 속성을 부여하면
+      transition 속성이 어느정도 적용된다.
+
+      opasity:0 ==> 완전히 투명한 상태 ~ 1: 완전히 보이는 상태.
+
+      */
+
+      ul.drop-menu {
+        visibility: hidden;
+        opacity: 0;
+        transition: 1s;
+
+        z-index: initial;
+        transform: translateY(-1rem);
+
+        margin-left: 20px;
+        list-style: none;
+
+        /*
+            drop submenu 폭에 관계없이 top menu 의 width 유지.
+            이 속성이 적용되려면 바깥쪽 box 의 position이 relative 이어야만 한다.
+        */
+        position: absolute;
+
+        /*
+        최소 폭 유지
+            submenu 가 접히는(wrap) 현상을 방지하기 위하여
+            submenu의 width 가 가장 큰 요소의 값으로 설정한다
+        */
+        min-width: 200px;
+      }
+      ul.drop-menu li {
+        padding: 12px 16px;
+        cursor: pointer;
+      }
+      ul.drop-menu li:hover {
+        background-color: #ddd;
+      }
+      .menu-box:hover ul.drop-menu {
+        visibility: visible;
+        opacity: 1;
+
+        transform: translateY(0);
+      }
+      div.menu-box:nth-of-type(2) .top-menu {
+        background-color: #c72b18;
+      }
+    </style>
+  </head>
+  <body>
+    <!--첫 메뉴-->
+    <div class="menu-box">
+      <div class="top-menu">짜장면</div>
+      <ul class="drop-menu">
+        <li i>보통</li>
+        <li>간짜장</li>
+        <li>쟁반짜장</li>
+      </ul>
+    </div>
+    <!--다음 메뉴-->
+    <div class="menu-box">
+      <div class="top-menu">짬뽕</div>
+      <ul class="drop-menu">
+        <li>보통</li>
+        <li>해물짬뽕</li>
+        <li>짬짜면</li>
+      </ul>
+    </div>
+    <!--세번째 메뉴-->
+    <div class="menu-box">
+      <div class="top-menu">검색</div>
+      <ul class="drop-menu">
+        <li>구글</li>
+        <li>네이버</li>
+        <li>다음</li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    // .drop-menu 클래스 아래의 li tag 들을 모아서 menuList 에 저장.
+    // menuList 에는 현재 문서에서  조건에 맞는 li tag를 모두 가져와서
+    // menuLust 를 배열로 만들어 준다.
+    const menuList = document.querySelectorAll(".drop-menu li");
+
+    //let 키워드는 값이 변동되는 변수일 경우 선언하는 키워드
+    for (let i = 0; i < menuList.length; i++) {
+      /*
+        eventListener 설정, event Handler 설정
+        li tag 를 클릭하면 li tag의 text 를 text라는 변수에 담고 알림창에 출력
+        */
+      menuList[i].addEventListener("click", () => {
+        const text = menuList[i].innerText;
+        alert(text);
+
+        if (text === "구글") {
+          document.location.href = "https://google.com";
+        } else if (text === "네이버") {
+          document.location.href = "https://naver.com";
+        } else if (text === "다음") {
+          document.location.href = "https://daum.net";
+        } else if (text === "간짜장") {
+          confirm("간짜장 시키신분");
+        }
+      });
+    }
+  </script>
+</html>
