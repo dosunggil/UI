@@ -1,0 +1,50 @@
+<!DOCUTYPE HTML>
+<html language="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>나의 홈페이지</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        width: 100vw;
+        height: 100vh;
+      }
+      div {
+        width: 100%;
+        background-size: cover;
+        height: 100%;
+        background-attachment: fixed;
+      }
+      div:nth-of-type(1) {
+        background-image: url(../images/image\(5\).jpg);
+        /*box 크기만큼 자동으로 이미지 채우기
+        cover : 박스보다 이미지가 클 때
+        contain : 박스보다 이미지가 작을 때*/
+      }
+      div:nth-of-type(2) {
+        background-image: url(../images/image\(1\).jpg);
+      }
+      div:nth-of-type(3) {
+        background-image: url(../images/image\(2\).jpg);
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>반갑습니다.</h1>
+      <h3>parallex 효과</h3>
+      <h4>
+        배경이미지를 attachment를 사용하여 fixed 하면 div box 는 스크롤이 되지만
+        배경은 고정되어 마치 이미지가 블라인드 처럼 전환된다.
+      </h4>
+    </div>
+    <div><h1>우리나라만세</h1></div>
+    <div><h1>Republic of Korea</h1></div>
+  </body>
+</html>
